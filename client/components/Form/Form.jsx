@@ -3,20 +3,21 @@ import axios from "axios";
 import "./form.css";
 import toast from "react-hot-toast";
 
-const Form = () => {
+const Form = ({ setList }) => {
 
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
         try {
-            const res = await axios.post("http://localhost:5173/api/user/add-address", { name, address });
+            const res = await axios.post("http://localhost:4000/api/user/add-address", { name, address });
             const data = await res.data;
 
-            if (data.success) {
+            if (data?.success) {
                 toast.success(data?.message);
             }
-            console.log(data)
         } catch (error) {
             toast.error(error.response.data.message);
             console.log(error.message)
@@ -37,7 +38,11 @@ const Form = () => {
             </div>
 
             <div className="submit_btn">
-                <button>SUBMIT</button>
+                <button type="submit">SUBMIT</button>
+            </div>
+
+            <div onClick={() => setList(true)} className="list_btn">
+                <button className="view_list">VIEW LIST</button>
             </div>
 
         </form>

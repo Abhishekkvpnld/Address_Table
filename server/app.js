@@ -3,6 +3,7 @@ import cors from "cors";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import { dbConnection } from "./connection/dbConnection.js";
+import addressRoute from "./routes/address.js";
 
 dotenv.config();
 
@@ -15,6 +16,8 @@ app.use(
     origin: [process.env.FRONTEND_URL, "http://localhost:5173"],
   })
 );
+
+app.use("/api/user", addressRoute);
 
 const port = process.env.PORT;
 

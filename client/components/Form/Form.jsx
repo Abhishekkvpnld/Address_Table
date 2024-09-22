@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "./form.css";
+import toast from "react-hot-toast";
 
 const Form = () => {
 
@@ -8,12 +9,18 @@ const Form = () => {
     const [address, setAddress] = useState("");
 
     const handleSubmit = async () => {
-        // try {
-        //     const res = await axios.post("http://localhost:5173/address", { name, address });
-        //     const data = await res.data;
-        // } catch (error) {
-        //     console.log(error.message)
-        // }
+        try {
+            const res = await axios.post("http://localhost:5173/api/user/add-address", { name, address });
+            const data = await res.data;
+
+            if (data.success) {
+                toast.success(data?.message);
+            }
+            console.log(data)
+        } catch (error) {
+            toast.error(error.response.data.message);
+            console.log(error.message)
+        }
     }
 
 

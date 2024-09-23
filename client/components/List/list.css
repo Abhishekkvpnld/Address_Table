@@ -1,0 +1,40 @@
+.list {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+table {
+  background-color: white;
+  width: 80%;
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
+.header {
+  border: 2px solid red;
+  text-align: center;
+  border-bottom: 1px solid green;
+  height: 40px;
+}
+
+.body {
+  text-align: center;
+}
+
+th {
+  color: rgb(182, 10, 10);
+}
+
+.date {
+  color: rgb(18, 136, 165);
+}
+
+.index {
+  font-weight: bold;
+  color: rgb(100, 97, 97);
+}
